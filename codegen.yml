@@ -12,7 +12,3 @@ generates:
       - 'typescript-react-apollo'
     config:
       useIndexSignature: true
-  generated/graphql.d.ts:
-    schema: 'server/graphql/schema.ts'
-    plugins:
-      - 'typescript'
