@@ -1,0 +1,17 @@
+overwrite: true
+schema: 'src/modules/graphql/schema.ts'
+require:
+  - ts-node/register
+documents: 'src/modules/graphql/**/*.graphql'
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - "typescript-resolvers"
+      - 'typescript-react-apollo'
+    config:
+      contextType: "src/types/Context#Context"
+      useIndexSignature: true
+      customResolveInfo: "src/types/ResolveInfo#ResolveInfo"
+      customFieldConfig: "src/types/FieldConfig#FieldConfig"

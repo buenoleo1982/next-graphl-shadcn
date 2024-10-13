@@ -1,0 +1,18 @@
+mutation RegisterAccount($credentials: credentials!) {
+  createAccount(credentials: $credentials) {
+    message
+  }
+}
+
+mutation Login($credentials: loginCredentials!) {
+  login(credentials: $credentials) {
+    username
+  }
+}
+
+query ImplicitLogin {
+  implicitLogin {
+    username
+    loggedIn
+  }
+}
