@@ -20,6 +20,7 @@
     "noImplicitReturns": true,
     "typeRoots": [
       "./node_modules/@types",
+      "./types",
       "./types/**/*.d.ts",
       "./src/**/*.d.ts",
       "./types/nexus-types.d.ts"

@@ -1,9 +1,9 @@
 import type { PrismaClient } from '@prisma/client'
-import { hash } from 'bcrypt'
+// import { hash } from 'bcrypt'
 import type { FieldResolver } from 'nexus'
 import nodemailer from 'nodemailer'
 
-import { getRedisClient } from '../../lib/redis'
+// import { getRedisClient } from '../../lib/redis'
 import { getTransport } from '../../mail/transport'
 import { generateVerificationEmail } from '../../mail/verifyAccount'
 import { registrationValidation } from '../../utils/registrationValidation'
@@ -19,20 +19,20 @@ export const createAccount: FieldResolver<'Mutation', 'createAccount'> = async (
   await registrationValidation.validate(credentials)
   await verifyExistUser(prisma, credentials)
 
-  const hashedPass = await hash(credentials.password, 7)
+  // const hashedPass = await hash(credentials.password, 7)
   const key = uuidV4()
 
-  const userOjt = {
-    username: credentials.username,
-    email: credentials.email,
-    hashedPass
-  }
+  // const userObjt = {
+  //   username: credentials.username,
+  //   email: credentials.email,
+  //   hashedPass
+  // }
 
-  await getRedisClient()
-    .multi()
-    .hmset(key, userOjt)
-    .expire(key, 60 * 60 * 24)
-    .exec()
+  // await getRedisClient()
+  //   .multi()
+  //   .hmset(key, userOjt)
+  //   .expire(key, 60 * 60 * 24)
+  //   .exec()
   const mailOptions = {
     username: credentials.username,
     email: credentials.email,

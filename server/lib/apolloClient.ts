@@ -37,7 +37,7 @@ function createIsomorphicLink(ctx?: SchemaContext) {
   console.warn('subdomain', subdomain)
 
   const httpLink = new HttpLink({
-    uri: 'http://localhost:3000/api/graphql',
+    uri: '/api/graphql',
     credentials: 'same-origin',
     headers: {
       Authorization: token ? `Bearer ${token}` : '',

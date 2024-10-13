@@ -7,7 +7,6 @@ import {
 } from '@/generated/graphql'
 import { initializeApollo } from '@/server/lib/apolloClient'
 import { prisma } from '@/server/lib/prisma'
-import LoginPage from './login'
 
 interface Props {
   username?: string
@@ -15,7 +14,10 @@ interface Props {
 }
 
 const Home = ({ username, loggedIn }: Props) => {
-  return loggedIn ? <div>Hello {username}</div> : <LoginPage />
+  if (!loggedIn) {
+    return null
+  }
+  return <div>Hello {username}</div>
 }
 
 export const getServerSideProps = async ({
@@ -25,7 +27,10 @@ export const getServerSideProps = async ({
   const cookies = nookies.get({ req })
   if (!cookies.sid) {
     return {
-      props: { loggedIn: false } as Props
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
     }
   }
 
@@ -37,9 +42,10 @@ export const getServerSideProps = async ({
 
   if (!data?.implicitLogin?.loggedIn) {
     return {
-      props: {
-        loggedIn: false
-      } as Props
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
     }
   }
   return {
