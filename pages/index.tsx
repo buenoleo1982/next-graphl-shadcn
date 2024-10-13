@@ -1,13 +1,12 @@
-import { Heading } from '@chakra-ui/react'
 import type { GetServerSidePropsContext } from 'next'
 import nookies from 'nookies'
 
 import {
   ImplicitLoginDocument,
   type ImplicitLoginQuery
-} from '../../generated/graphql'
-import { initializeApollo } from '../lib/apolloClient'
-import { prisma } from '../lib/prisma'
+} from '@/generated/graphql'
+import { initializeApollo } from '@/server/lib/apolloClient'
+import { prisma } from '@/server/lib/prisma'
 import LoginPage from './login'
 
 interface Props {
@@ -16,7 +15,7 @@ interface Props {
 }
 
 const Home = ({ username, loggedIn }: Props) => {
-  return loggedIn ? <Heading>Hello {username}</Heading> : <LoginPage />
+  return loggedIn ? <div>Hello {username}</div> : <LoginPage />
 }
 
 export const getServerSideProps = async ({

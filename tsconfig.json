@@ -18,9 +18,22 @@
     "noUnusedParameters": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "typeRoots": ["./node_modules/@types", "./types/**/*.d.ts", "./src/**/*.d.ts","./types/nexus-types.d.ts" ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types/**/*.d.ts",
+      "./src/**/*.d.ts",
+      "./types/nexus-types.d.ts"
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.tsx", "vitest.config.mts", "./types/nexus-types.d.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.tsx",
+    "vitest.config.mts",
+    "./types/nexus-types.d.ts"
+  ],
   "exclude": ["node_modules"],
   "ts-node": {
     "compilerOptions": {

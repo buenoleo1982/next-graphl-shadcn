@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import {
   ApolloClient,
-  from,
   HttpLink,
   InMemoryCache,
-  type NormalizedCacheObject
+  type NormalizedCacheObject,
+  from
 } from '@apollo/client'
 import { SchemaLink } from '@apollo/client/link/schema'
 import merge from 'deepmerge'
@@ -23,7 +23,7 @@ type SchemaContext =
 
 function createIsomorphicLink(ctx?: SchemaContext) {
   if (typeof window === 'undefined') {
-    const { schema } = require('../modules/graphql/schema')
+    const { schema } = require('../graphql/schema')
     return new SchemaLink({
       schema,
       context: ctx
@@ -75,7 +75,9 @@ export function initializeApollo({ ctx, initialState }: InitApollo) {
       // combine arrays using object equality (like in sets)
       arrayMerge: (destinationArray, sourceArray) => [
         ...sourceArray,
-        ...destinationArray.filter(d => sourceArray.every(s => !isEqual(d, s)))
+        ...destinationArray.filter((d) =>
+          sourceArray.every((s) => !isEqual(d, s))
+        )
       ]
     })
 

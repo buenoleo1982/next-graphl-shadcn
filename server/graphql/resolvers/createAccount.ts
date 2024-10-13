@@ -3,7 +3,7 @@ import { hash } from 'bcrypt'
 import type { FieldResolver } from 'nexus'
 import nodemailer from 'nodemailer'
 
-import { getRedisClient } from '../../../lib/redis'
+import { getRedisClient } from '../../lib/redis'
 import { getTransport } from '../../mail/transport'
 import { generateVerificationEmail } from '../../mail/verifyAccount'
 import { registrationValidation } from '../../utils/registrationValidation'
@@ -40,7 +40,7 @@ export const createAccount: FieldResolver<'Mutation', 'createAccount'> = async (
   }
 
   const transport = await getTransport()
-  transport.sendMail(generateVerificationEmail(mailOptions)).then(info => {
+  transport.sendMail(generateVerificationEmail(mailOptions)).then((info) => {
     console.log(`Message id: ${info.messageId}`)
     console.log(`URL: ${nodemailer.getTestMessageUrl(info)}`)
   })

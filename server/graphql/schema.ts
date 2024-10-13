@@ -11,7 +11,7 @@ const schema = makeSchema({
   types: [DateScalar, types],
   plugins: [AuthPlugin],
   contextType: {
-    module: join(process.cwd(), './src/types/Context.ts'),
+    module: join(process.cwd(), './types/context.d.ts'),
     export: 'Context'
   },
   outputs: {

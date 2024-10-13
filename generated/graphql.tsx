@@ -1,6 +1,4 @@
-import { GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
-import { ResolveInfo as GraphQLResolveInfo } from 'src/types/ResolveInfo';
-import { Context } from 'src/types/Context';
+import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
@@ -265,12 +263,12 @@ export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
   name: 'Date';
 }
 
-export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   createAccount?: Resolver<Maybe<ResolversTypes['registerResponse']>, ParentType, ContextType, RequireFields<MutationCreateAccountArgs, 'credentials'>>;
   login?: Resolver<Maybe<ResolversTypes['loginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'credentials'>>;
 }>;
 
-export type PaginationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Pagination'] = ResolversParentTypes['Pagination']> = ResolversObject<{
+export type PaginationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Pagination'] = ResolversParentTypes['Pagination']> = ResolversObject<{
   hasMore?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   pageSize?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -278,20 +276,20 @@ export type PaginationResolvers<ContextType = Context, ParentType extends Resolv
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   getUser?: Resolver<Maybe<ResolversTypes['UserResponse']>, ParentType, ContextType, Partial<QueryGetUserArgs>>;
   getUsers?: Resolver<Maybe<ResolversTypes['UserList']>, ParentType, ContextType, Partial<QueryGetUsersArgs>>;
   implicitLogin?: Resolver<Maybe<ResolversTypes['implicitLoginResponse']>, ParentType, ContextType>;
   test?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<QueryTestArgs, 'bool'>>;
 }>;
 
-export type UserListResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UserList'] = ResolversParentTypes['UserList']> = ResolversObject<{
+export type UserListResolvers<ContextType = any, ParentType extends ResolversParentTypes['UserList'] = ResolversParentTypes['UserList']> = ResolversObject<{
   nodes?: Resolver<Maybe<Array<ResolversTypes['UserResponse']>>, ParentType, ContextType>;
   pagination?: Resolver<ResolversTypes['Pagination'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type UserResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UserResponse'] = ResolversParentTypes['UserResponse']> = ResolversObject<{
+export type UserResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['UserResponse'] = ResolversParentTypes['UserResponse']> = ResolversObject<{
   createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -299,7 +297,7 @@ export type UserResponseResolvers<ContextType = Context, ParentType extends Reso
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type ImplicitLoginResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['implicitLoginResponse'] = ResolversParentTypes['implicitLoginResponse']> = ResolversObject<{
+export type ImplicitLoginResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['implicitLoginResponse'] = ResolversParentTypes['implicitLoginResponse']> = ResolversObject<{
   email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   loggedIn?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -307,7 +305,7 @@ export type ImplicitLoginResponseResolvers<ContextType = Context, ParentType ext
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type LoginResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['loginResponse'] = ResolversParentTypes['loginResponse']> = ResolversObject<{
+export type LoginResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['loginResponse'] = ResolversParentTypes['loginResponse']> = ResolversObject<{
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   token?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -315,12 +313,12 @@ export type LoginResponseResolvers<ContextType = Context, ParentType extends Res
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type RegisterResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['registerResponse'] = ResolversParentTypes['registerResponse']> = ResolversObject<{
+export type RegisterResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['registerResponse'] = ResolversParentTypes['registerResponse']> = ResolversObject<{
   message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type Resolvers<ContextType = Context> = ResolversObject<{
+export type Resolvers<ContextType = any> = ResolversObject<{
   Date?: GraphQLScalarType;
   Mutation?: MutationResolvers<ContextType>;
   Pagination?: PaginationResolvers<ContextType>;

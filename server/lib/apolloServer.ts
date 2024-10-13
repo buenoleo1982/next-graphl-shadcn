@@ -2,7 +2,7 @@ import { type Prisma, PrismaClient } from '@prisma/client'
 import { ApolloError, ApolloServer } from 'apollo-server-micro'
 import jwt, { type JwtPayload } from 'jsonwebtoken'
 
-import { schema } from '../modules/graphql/schema'
+import { schema } from '../graphql/schema'
 
 // Função para criar um cliente Prisma com logging
 const createPrismaClientWithLogging = (datasource: string) => {

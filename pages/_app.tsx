@@ -1,9 +1,9 @@
+import '@/styles/globals.css'
 import { ApolloProvider } from '@apollo/client'
-import { ChakraProvider, CSSReset } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import { useApollo } from '../lib/apolloClient'
+import { useApollo } from '@/server/lib/apolloClient'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps)
@@ -11,16 +11,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
       <Head>
-        <title>Test App</title>
+        <title>TcheTask</title>
         <meta name="description" content="A Test Application" />
         <link rel="icon" href="/favicon2.ico" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <ChakraProvider>
-        <CSSReset />
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <Component {...pageProps} />
     </ApolloProvider>
   )
 }
