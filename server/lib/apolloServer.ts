@@ -6,10 +6,12 @@ import { schema } from '../graphql/schema'
 
 // Função para criar um cliente Prisma com logging
 const createPrismaClientWithLogging = (datasource: string) => {
+  const db = `process.env.POSTGRES_URL_${datasource.toUpperCase()}`
+  const dbUrl = `${db}`
   const prisma = new PrismaClient({
     datasources: {
       db: {
-        url: `${process.env.DATABASE_URL}?schema=${datasource}`
+        url: datasource === 'public' ? process.env.DATABASE_URL : dbUrl
       }
     },
     log: [{ emit: 'event', level: 'query' }]

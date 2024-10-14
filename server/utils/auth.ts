@@ -14,7 +14,7 @@ export const isAuth = async (
       })
 ) => {
   const cookies = nookies.get({ req })
-  if (!cookies.ssid) {
+  if (!cookies.sid) {
     throw new Error('Not authenticated')
   }
   const decodeJWT = await verifyToken(cookies.ssid)

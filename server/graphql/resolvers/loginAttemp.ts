@@ -26,7 +26,7 @@ export const loginAttemp: FieldResolver<'Mutation', 'login'> = async (
   nookies.set({ res }, 'sid', encodedToken, {
     httpOnly: true,
     domain: process.env.SERVER_DOMAIN || undefined,
-    maxAge: 60 * 5,
+    maxAge: 60 * 30,
     sameSite: true,
     path: '/'
   })
